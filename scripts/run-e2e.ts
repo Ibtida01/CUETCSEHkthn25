@@ -3,7 +3,8 @@
  * Usage: tsx scripts/run-e2e.ts
  */
 
-import { spawn, type ChildProcess } from "node:child_process";
+import { spawn  } from "node:child_process";
+import type {ChildProcess} from "node:child_process";
 import { access } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
