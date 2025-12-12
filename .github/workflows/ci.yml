@@ -73,3 +73,20 @@ jobs:
           tags: delineate-hackathon-challenge:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+  deploy:
+    name: Deploy (Optional)
+    runs-on: ubuntu-24.04
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - name: Deployment placeholder
+        run: |
+          echo "Deployment stage - ready for production"
+          echo "Uncomment deployment steps when ready"
+      
+      # Uncomment when ready to deploy:
+      # - name: Deploy to Railway
+      #   run: echo "railway up"
+      #   env:
+      #     RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
