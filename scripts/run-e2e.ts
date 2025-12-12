@@ -67,16 +67,12 @@ async function waitForServer(maxAttempts = 30): Promise<boolean> {
 async function startServer(): Promise<ChildProcess> {
   console.log(`${colors.yellow}Starting server...${colors.reset}`);
 
-  const server = spawn(
-    "npx",
-    ["tsx", "src/index.ts"],
-    {
-      cwd: projectDir,
-      stdio: ["ignore", "pipe", "pipe"],
-      env: { ...process.env },
-      shell: true,
-    },
-  );
+  const server = spawn("npx", ["tsx", "src/index.ts"], {
+    cwd: projectDir,
+    stdio: ["ignore", "pipe", "pipe"],
+    env: { ...process.env },
+    shell: true,
+  });
 
   server.stdout?.on("data", (data: Buffer) => {
     const output = data.toString().trim();
@@ -99,15 +95,11 @@ async function runTests(): Promise<number> {
   console.log();
 
   return new Promise((resolve) => {
-    const testProcess = spawn(
-      "npx",
-      ["tsx", "scripts/e2e-test.ts"],
-      {
-        cwd: projectDir,
-        stdio: "inherit",
-        shell: true,
-      },
-    );
+    const testProcess = spawn("npx", ["tsx", "scripts/e2e-test.ts"], {
+      cwd: projectDir,
+      stdio: "inherit",
+      shell: true,
+    });
 
     testProcess.on("close", (code) => {
       resolve(code ?? 1);
