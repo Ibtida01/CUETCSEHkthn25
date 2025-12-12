@@ -84,7 +84,7 @@ jobs:
         run: |
           echo "Deployment stage - ready for production"
           echo "Uncomment deployment steps when ready"
-      
+
       # Uncomment when ready to deploy:
       # - name: Deploy to Railway
       #   run: echo "railway up"
